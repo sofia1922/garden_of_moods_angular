@@ -1,9 +1,21 @@
-<nav class="navbar">
-  <h1>{{ title }}</h1>
-  <a routerLink="/mood-form" routerLinkActive="active">🌼 Mood Form</a>
-  <a routerLink="/result" routerLinkActive="active">🌸 Results</a>
-</nav>
+<header class="app-header">
+    <div class="logo-title">
+        <h1>🌼 MoodGarden</h1>
+    </div>
+
+    <nav class="navbar">
+        <a routerLink="/" routerLinkActive="active">
+            🏠 Головна
+        </a>
+        <a routerLink="/mood-form" routerLinkActive="active">
+            📝 Опитування
+        </a>
+        <a routerLink="/result" routerLinkActive="active">
+            📊 Результати
+        </a>
+    </nav>
+</header>
 
 <main class="content">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </main>
