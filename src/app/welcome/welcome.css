@@ -1,0 +1,47 @@
+.welcome-container {
+  max-width: 680px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #f1e5f8;
+  box-shadow: 0 4px 18px rgba(100, 70, 150, 0.12);
+}
+
+.welcome-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #7a3ea1;
+  margin-bottom: 20px;
+}
+
+.welcome-text {
+  font-size: 18px;
+  color: #5d4a75;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.welcome-secondary {
+  font-size: 16px;
+  color: #6a5b87;
+  margin-bottom: 35px;
+}
+
+.cta-button {
+  padding: 14px 36px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #b16be8, #7d3bd6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(125, 59, 214, 0.3);
+}

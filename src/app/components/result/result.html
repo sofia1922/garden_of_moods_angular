@@ -1,4 +1,53 @@
-<div class="result-container">
-  <h2>✨ Your current mood: <span>{{ mood }}</span></h2>
-  <a routerLink="/mood-form">Go back</a>
+<div class="result-wrapper" *ngIf="moodData; else notFound">
+  
+  <div class="result-card">
+    
+    <div class="mood-header">
+      <span class="emoji">{{ moodData.emoji }}</span>
+      <h2 class="title">{{ moodData.title }}</h2>
+    </div>
+
+    <p class="description">
+      {{ moodData.description }}
+    </p>
+
+    <div class="section">
+      <h4>📌 Коли таке може бути?</h4>
+      <p>{{ moodData.when }}</p>
+    </div>
+
+    <div class="section">
+      <h4>💡 Що робити?</h4>
+      <p>{{ moodData.advice }}</p>
+    </div>
+
+    <div class="music-block">
+      <h4>🎧 Музика під твій стан</h4>
+      <a [href]="moodData.musicLink" target="_blank">
+        {{ moodData.musicTitle }}
+      </a>
+
+      <iframe 
+        [src]="moodData.musicLink | safeUrl" 
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        class="music-frame">
+      </iframe>
+    </div>
+
+    <div class="buttons">
+      <a routerLink="/mood-form" class="btn">Пройти опитування ще раз</a>
+      <a routerLink="/mood-guide" class="btn secondary">Всі можливі результати</a>
+    </div>
+
+  </div>
 </div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <h2>😕 Результат не знайдено</h2>
+    <p>Схоже, щось пішло не так.</p>
+
+    <a routerLink="/mood-form" class="btn">Повернутися до форми</a>
+  </div>
+</ng-template>

@@ -1,6 +1,90 @@
-<div class="form-container">
-  <h2>🌿 What's your mood today?</h2>
+<div class="survey-wrapper">
+  <div class="survey-card">
+    <h2>🌿 Який у тебе настрій сьогодні?</h2>
 
-  <input [(ngModel)]="mood" placeholder="Type your mood..." />
-  <button (click)="submitForm()">Check Result</button>
+    <form (ngSubmit)="submitForm()" #surveyForm="ngForm">
+
+      
+      <div class="form-group">
+        <label>Твій настрій</label>
+      <input 
+        type="text" 
+        [(ngModel)]="formData.mood"
+        name="mood"
+        placeholder="Введи свій настрій..."
+        required />
+      </div>
+
+      <div class="form-group">
+        <label>Обери емоцію</label>
+      <select [(ngModel)]="formData.emotion" name="emotion" required>
+        <option value="" disabled selected>Обери емоцію...</option>
+        <option value="happy">😊 Радість</option>
+        <option value="sad">😔 Смуток</option>
+        <option value="stressed">😫 Стрес</option>
+        <option value="calm">😌 Спокій</option>
+        <option value="angry">😡 Злість</option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label>Чим ти сьогодні займався?</label>
+      <input
+        type="text"
+        [(ngModel)]="formData.activity"
+        name="activity"
+        placeholder="Наприклад: навчання, спорт, відпочинок..."
+      />
+      </div>
+
+      <div class="form-group">
+        <label>Яка погода сьогодні за вікном?</label>
+      <select [(ngModel)]="formData.weather" name="weather">
+        <option value="" disabled selected>Обери погоду...</option>
+        <option value="sunny">☀️ Сонячно</option>
+        <option value="cloudy">☁️ Хмарно</option>
+        <option value="rainy">🌧 Дощ</option>
+        <option value="snowy">❄️ Сніг</option>
+        <option value="windy">🌬 Вітер</option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label>Які у тебе плани на сьогодні?</label>
+      <textarea
+        [(ngModel)]="formData.plans"
+        name="plans"
+        rows="2"
+        placeholder="Робота, навчання, зустрічі..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Сила емоції: {{ formData.intensity }}/10</label>
+      <input 
+        type="range" 
+        min="1" 
+        max="10"
+        [(ngModel)]="formData.intensity"
+        name="intensity"/>
+      </div>
+
+      <div class="form-group">
+        <label class="checkbox">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="formData.wantAdvice" 
+          name="wantAdvice"/> 
+        Хочу пораду 🧠
+      </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Отримати результат</button>
+
+    </form>
+  </div>
+
+  <div *ngIf="result" class="result-card">
+    <h3>Твій результат 🌟</h3>
+    <p>{{ result }}</p>
+  </div>
 </div>
