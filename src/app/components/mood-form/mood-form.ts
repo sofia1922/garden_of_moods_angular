@@ -8,11 +8,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './mood-form.html',
-  styleUrls: ['./mood-form.css']
+  styleUrls: ['./mood-form.css'],
 })
 export class MoodFormComponent {
-
-  result: string | null = null;   
+  result: string | null = null;
 
   formData = {
     mood: '',
@@ -20,14 +19,15 @@ export class MoodFormComponent {
     intensity: 5,
     wantAdvice: false,
     activity: '',
-  weather: '',
-  plans: ''
-
+    weather: '',
+    plans: '',
   };
 
   constructor(private router: Router) {}
 
   submitForm() {
-    this.result = `Твій настрій: ${this.formData.mood}`;
+    this.router.navigate(['/result'], {
+      queryParams: { mood: this.formData.emotion },
+    });
   }
 }

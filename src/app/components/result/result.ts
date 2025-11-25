@@ -19,7 +19,7 @@ interface MoodInfo {
   standalone: true,
   imports: [CommonModule, SafeUrlPipe],
   templateUrl: './result.html',
-  styleUrls: ['./result.css']
+  styleUrls: ['./result.css'],
 })
 export class ResultComponent {
   moodId: string | null = null;
@@ -34,7 +34,7 @@ export class ResultComponent {
       when: 'Після приємних подій, зустрічей, досягнень.',
       advice: 'Спрямуй енергію на те, що дає тобі розвиток.',
       musicTitle: 'Легкий indie-pop',
-      musicLink: 'https://www.youtube.com/watch?v=G7KNmW9a75Y'
+      musicLink: 'https://www.youtube.com/embed/G7KNmW9a75Y',
     },
     {
       id: 'sad',
@@ -44,7 +44,7 @@ export class ResultComponent {
       when: 'Після втрат, складних розмов, перевтоми.',
       advice: 'Дозволь собі сумувати, подбай про себе.',
       musicTitle: 'Спокійний lo-fi',
-      musicLink: 'https://www.youtube.com/watch?v=jfKfPfyJRdk'
+      musicLink: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
     },
     {
       id: 'stressed',
@@ -54,7 +54,7 @@ export class ResultComponent {
       when: 'Сесія, дедлайни, інтенсивні події.',
       advice: 'Зроби паузу, подихай, вийди на повітря.',
       musicTitle: 'Ambient для заспокоєння',
-      musicLink: 'https://www.youtube.com/watch?v=2OEL4P1Rz04'
+      musicLink: 'https://www.youtube.com/watch?v=2OEL4P1Rz04',
     },
     {
       id: 'calm',
@@ -64,7 +64,7 @@ export class ResultComponent {
       when: 'Після відпочинку або стабільного дня.',
       advice: 'Гарний час для планів або творчості.',
       musicTitle: 'Nature sounds',
-      musicLink: 'https://www.youtube.com/watch?v=lTRiuFIWV54'
+      musicLink: 'https://www.youtube.com/watch?v=lTRiuFIWV54',
     },
     {
       id: 'angry',
@@ -74,18 +74,18 @@ export class ResultComponent {
       when: 'Коли порушили твої межі або накопичилось.',
       advice: 'Розрядись фізично або проговори емоції.',
       musicTitle: 'Мʼякий рок для звільнення напруги',
-      musicLink: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ'
-    }
+      musicLink: 'https://www.youtube.com/watch?v=fJ9rUzIMcZQ',
+    },
   ];
 
   constructor(private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.moodId = params['mood'] || null;
       this.loadMoodData();
     });
   }
 
   loadMoodData() {
-    this.moodData = this.allMoods.find(m => m.id === this.moodId) || null;
+    this.moodData = this.allMoods.find((m) => m.id === this.moodId) || null;
   }
 }
