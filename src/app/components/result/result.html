@@ -1,11 +1,12 @@
 <div class="result-wrapper" *ngIf="moodData; else notFound">
-  
   <div class="result-card">
-    
+
     <div class="mood-header">
       <span class="emoji">{{ moodData.emoji }}</span>
       <h2 class="title">{{ moodData.title }}</h2>
     </div>
+
+    <img [src]="moodData.image" class="mood-image" />
 
     <p class="description">
       {{ moodData.description }}
@@ -21,14 +22,14 @@
       <p>{{ moodData.advice }}</p>
     </div>
 
-    <div class="music-block">
+    <div class="section">
       <h4>🎧 Музика під твій стан</h4>
       <a [href]="moodData.musicLink" target="_blank">
         {{ moodData.musicTitle }}
       </a>
 
-      <iframe 
-        [src]="moodData.musicLink | safeUrl" 
+      <iframe
+        [src]="moodData.musicLink | safeUrl"
         frameborder="0"
         allow="autoplay; encrypted-media"
         class="music-frame">
@@ -36,8 +37,7 @@
     </div>
 
     <div class="buttons">
-      <a routerLink="/mood-form" class="btn">Пройти опитування ще раз</a>
-      <a routerLink="/mood-guide" class="btn secondary">Всі можливі результати</a>
+      <button class="btn" (click)="restart()">Пройти опитування ще раз</button>
     </div>
 
   </div>
@@ -47,7 +47,6 @@
   <div class="not-found">
     <h2>😕 Результат не знайдено</h2>
     <p>Схоже, щось пішло не так.</p>
-
     <a routerLink="/mood-form" class="btn">Повернутися до форми</a>
   </div>
 </ng-template>
